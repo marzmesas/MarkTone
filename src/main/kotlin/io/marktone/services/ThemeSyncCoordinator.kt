@@ -42,8 +42,8 @@ class ThemeSyncCoordinator {
         val tokens = service<CssTokenGenerator>().generate(snapshot)
         val baseCss = service<MarkdownRuleComposer>().compose(tokens, settings.profile)
         val css = appendCustomOverrides(baseCss, settings.customOverridesPath)
-        val cssPath = service<CssOutputService>().write(css)
-        service<PreviewSyncService>().applyGeneratedCss(cssPath)
+        service<CssOutputService>().write(css)
+        service<PreviewSyncService>().applyGeneratedCss(css)
     }
 
     private fun appendCustomOverrides(baseCss: String, customOverridesPath: String): String {

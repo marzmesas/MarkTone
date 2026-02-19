@@ -4,19 +4,16 @@ import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.ProjectManager
 import org.intellij.plugins.markdown.settings.MarkdownSettings
-import java.nio.file.Path
-
 @Service(Service.Level.APP)
 class PreviewSyncService {
 
     private val logger = thisLogger()
 
-    fun applyGeneratedCss(cssPath: Path) {
-        val pathString = cssPath.toAbsolutePath().toString()
+    fun applyGeneratedCss(css: String) {
         val projects = ProjectManager.getInstance().openProjects
 
         if (projects.isEmpty()) {
-            logger.info("MarkTone generated CSS at $pathString, but no open projects were found to apply settings.")
+            logger.info("MarkTone generated CSS, but no open projects were found to apply settings.")
             return
         }
 
@@ -24,10 +21,10 @@ class PreviewSyncService {
             try {
                 val markdownSettings = MarkdownSettings.getInstance(project)
                 markdownSettings.update {
-                    it.useCustomStylesheetPath = true
-                    it.customStylesheetPath = pathString
-                    it.useCustomStylesheetText = false
-                    it.customStylesheetText = ""
+                    it.useCustomStylesheetText = true
+                    it.customStylesheetText = css
+                    it.useCustomStylesheetPath = false
+                    it.customStylesheetPath = ""
                 }
                 logger.info("MarkTone applied Markdown custom stylesheet for project: ${project.name}")
             } catch (ex: Throwable) {
