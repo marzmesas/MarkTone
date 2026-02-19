@@ -4,8 +4,39 @@
     <vendor email="support@marktone.dev" url="https://marktone.dev">MarkTone</vendor>
 
     <description><![CDATA[
-        Auto-generates Markdown preview CSS from the current JetBrains IDE theme.
+        <p>MarkTone automatically generates and applies Markdown preview styles that match your current IDE theme.</p>
+
+        <h3>Features</h3>
+        <ul>
+            <li>Extracts colors and fonts from your active IDE theme</li>
+            <li>Generates a complete Markdown preview stylesheet with proper typography</li>
+            <li>Auto-syncs styles when you switch themes — no manual CSS editing needed</li>
+            <li>Two rendering profiles: <b>Exact Match</b> (tight, code-like) and <b>Readable Docs</b> (spacious, doc-friendly)</li>
+            <li>Optional custom CSS overrides for further tweaking</li>
+        </ul>
+
+        <h3>How it works</h3>
+        <p>MarkTone reads your current editor colors, font family, and font size, then composes a Markdown-specific
+        stylesheet using CSS custom properties. The result is applied directly to the Markdown preview panel.</p>
+
+        <h3>Requirements</h3>
+        <ul>
+            <li>JetBrains IDE 2024.2 or later</li>
+            <li>Markdown plugin (bundled with most JetBrains IDEs)</li>
+        </ul>
     ]]></description>
+
+    <change-notes><![CDATA[
+        <h3>0.1.0</h3>
+        <ul>
+            <li>Initial release</li>
+            <li>Theme extraction and CSS token generation</li>
+            <li>Markdown preview auto-sync on theme changes</li>
+            <li>Exact Match and Readable Docs rendering profiles</li>
+            <li>Settings panel under Tools > MarkTone</li>
+            <li>Custom CSS overrides support</li>
+        </ul>
+    ]]></change-notes>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>org.intellij.plugins.markdown</depends>

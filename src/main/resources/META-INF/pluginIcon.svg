@@ -1,0 +1,61 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Tile background: subtle dark-to-medium gradient -->
+        <linearGradient id="bgLight" x1="6" y1="4" x2="34" y2="36" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#2D2B55"/>
+            <stop offset="1" stop-color="#3D3B65"/>
+        </linearGradient>
+
+        <!-- Subtle spectral sweep (very low opacity, adds "theme adaptability" vibe) -->
+        <linearGradient id="sweepLight" x1="5" y1="30" x2="35" y2="10" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#00CECE" stop-opacity="0.00"/>
+            <stop offset="0.22" stop-color="#00CECE" stop-opacity="0.18"/>
+            <stop offset="0.45" stop-color="#6C5CE7" stop-opacity="0.18"/>
+            <stop offset="0.65" stop-color="#FF5EA8" stop-opacity="0.14"/>
+            <stop offset="0.86" stop-color="#FFD166" stop-opacity="0.10"/>
+            <stop offset="1" stop-color="#FFD166" stop-opacity="0.00"/>
+        </linearGradient>
+
+        <!-- Full-spectrum gradient for the hash (reads as "any theme") -->
+        <linearGradient id="hashSpectrumLight" x1="10" y1="10" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#6C5CE7"/>
+            <stop offset="0.30" stop-color="#00CECE"/>
+            <stop offset="0.55" stop-color="#FF5EA8"/>
+            <stop offset="0.80" stop-color="#FFD166"/>
+            <stop offset="1" stop-color="#6C5CE7"/>
+        </linearGradient>
+
+        <!-- Soft sheen for polish (kept subtle) -->
+        <linearGradient id="hashSheenLight" x1="14" y1="12" x2="26" y2="28" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.18"/>
+            <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Rounded square tile (2px padding) -->
+    <rect x="2" y="2" width="36" height="36" rx="8" fill="url(#bgLight)"/>
+
+    <!-- Subtle spectral sweep overlay on tile -->
+    <rect x="2" y="2" width="36" height="36" rx="8" fill="url(#sweepLight)"/>
+
+    <!-- Hash: filled geometry, slight slant, crisp at 40px -->
+    <g transform="rotate(-3 20 20)">
+        <!-- Main spectrum fill -->
+        <g fill="url(#hashSpectrumLight)">
+            <!-- verticals -->
+            <rect x="14.6" y="9.2" width="4.4" height="21.6" rx="2.2"/>
+            <rect x="21.0" y="9.2" width="4.4" height="21.6" rx="2.2"/>
+            <!-- horizontals -->
+            <rect x="9.2" y="15.3" width="21.6" height="4.6" rx="2.3"/>
+            <rect x="9.2" y="22.1" width="21.6" height="4.6" rx="2.3"/>
+        </g>
+
+        <!-- Subtle sheen -->
+        <g fill="url(#hashSheenLight)">
+            <rect x="14.6" y="9.2" width="4.4" height="21.6" rx="2.2"/>
+            <rect x="21.0" y="9.2" width="4.4" height="21.6" rx="2.2"/>
+            <rect x="9.2" y="15.3" width="21.6" height="4.6" rx="2.3"/>
+            <rect x="9.2" y="22.1" width="21.6" height="4.6" rx="2.3"/>
+        </g>
+    </g>
+</svg>
