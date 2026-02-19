@@ -1,0 +1,20 @@
+<idea-plugin>
+    <id>io.marktone.plugin</id>
+    <name>MarkTone</name>
+    <vendor email="support@marktone.dev" url="https://marktone.dev">MarkTone</vendor>
+
+    <description><![CDATA[
+        Auto-generates Markdown preview CSS from the current JetBrains IDE theme.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.intellij.plugins.markdown</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <postStartupActivity implementation="io.marktone.startup.MarkToneStartupActivity" />
+        <applicationConfigurable
+                id="io.marktone.settings"
+                displayName="MarkTone"
+                instance="io.marktone.settings.MarkToneConfigurable" />
+    </extensions>
+</idea-plugin>
