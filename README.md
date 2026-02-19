@@ -51,8 +51,3 @@ From project root:
 - Theme marketplace.
 - Per-project design systems.
 
-## Planning Docs
-
-- `ARCHITECTURE.md`
-- `IMPLEMENTATION_PLAN.md`
-- `DISCOVERY_NOTES.md`

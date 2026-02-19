@@ -5,3 +5,4 @@ out/
 *.iml
 .intellijPlatform/
 .kotlin/
+internal_planning_docs/
