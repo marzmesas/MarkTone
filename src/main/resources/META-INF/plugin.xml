@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>io.marktone.plugin</id>
     <name>MarkTone</name>
-    <vendor email="support@marktone.dev" url="https://marktone.dev">MarkTone</vendor>
+    <vendor email="mmesasro@gmail.com" url="https://github.com/marzmesas/MarkTone">MarkTone</vendor>
 
     <description><![CDATA[
         <p>MarkTone automatically generates and applies Markdown preview styles that match your current IDE theme.</p>
