@@ -27,13 +27,23 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>0.2.0</h3>
+        <ul>
+            <li>Richer theme capture: headings, inline code, bold text, and table headers now reflect your theme's keyword, string, and number colors</li>
+            <li>Profiles renamed to <b>Minimal</b> (compact layout, sober palette) and <b>Expressive</b> (spacious layout, full semantic colors)</li>
+            <li>Quick profile switching from <b>Tools &gt; MarkTone</b> menu with active profile checkmark</li>
+            <li>Fixed CSS not updating when changing profile in Settings</li>
+            <li>Distinct code block background derived from editor caret row color</li>
+            <li>Derived border color for better visibility across light and dark themes</li>
+        </ul>
+
         <h3>0.1.0</h3>
         <ul>
             <li>Initial release</li>
             <li>Theme extraction and CSS token generation</li>
             <li>Markdown preview auto-sync on theme changes</li>
             <li>Minimal and Expressive rendering profiles</li>
-            <li>Settings panel under Tools > MarkTone</li>
+            <li>Settings panel under Tools &gt; MarkTone</li>
             <li>Custom CSS overrides support</li>
         </ul>
     ]]></change-notes>
