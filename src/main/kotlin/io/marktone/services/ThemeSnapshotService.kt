@@ -7,13 +7,14 @@ import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.ui.ColorUtil
 import io.marktone.model.ThemeSnapshot
 import java.awt.Color
+import javax.swing.UIManager
 
 @Service(Service.Level.APP)
 class ThemeSnapshotService {
 
     fun capture(): ThemeSnapshot {
         val scheme = EditorColorsManager.getInstance().globalScheme
-        val bg = scheme.defaultBackground
+        val bg = UIManager.getColor("Panel.background") ?: scheme.defaultBackground
         val fg = scheme.defaultForeground
 
         return ThemeSnapshot(
