@@ -1,7 +1,7 @@
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 
 plugins {
-    kotlin("jvm") version "2.1.20"
+    kotlin("jvm") version "2.3.0"
     id("org.jetbrains.intellij.platform") version "2.11.0"
 }
 
@@ -17,12 +17,16 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaCommunity("2024.2")
+        intellijIdeaCommunity("2025.2.6.1")
         bundledPlugin("org.intellij.plugins.markdown")
-        testFramework(TestFrameworkType.Platform)
+        plugin("com.chrisrm.idea.MaterialThemeUI", "10.5.0")
+        plugin("com.thvardhan.gradianto", "5.5")
+        testFramework(TestFrameworkType.JUnit5)
     }
 
     testImplementation(kotlin("test"))
+    testImplementation("org.opentest4j:opentest4j:1.3.0")
+    testRuntimeOnly("junit:junit:4.13.2")
 }
 
 kotlin {
@@ -34,7 +38,7 @@ intellijPlatform {
         version = project.version.toString()
 
         ideaVersion {
-            sinceBuild = "242"
+            sinceBuild = "252"
         }
     }
 }
