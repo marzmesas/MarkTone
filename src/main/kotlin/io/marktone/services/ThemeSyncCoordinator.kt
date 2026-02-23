@@ -34,7 +34,7 @@ class ThemeSyncCoordinator {
             return
         }
 
-        if (!settings.autoSync && trigger != "startup") {
+        if (!settings.autoSync && trigger != "startup" && trigger != "settings-change") {
             return
         }
 

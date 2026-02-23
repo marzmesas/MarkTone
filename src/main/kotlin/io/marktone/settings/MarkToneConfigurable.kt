@@ -2,6 +2,7 @@ package io.marktone.settings
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.options.Configurable
+import io.marktone.services.ThemeSyncCoordinator
 import com.intellij.ui.components.JBTextField
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
@@ -82,6 +83,7 @@ class MarkToneConfigurable : Configurable {
                 customOverridesPath = customOverridesField?.text.orEmpty(),
             ),
         )
+        service<ThemeSyncCoordinator>().regenerateAndApply("settings-change")
     }
 
     override fun reset() {
