@@ -21,12 +21,18 @@
 
         <h3>Requirements</h3>
         <ul>
-            <li>JetBrains IDE 2024.2 or later</li>
+            <li>JetBrains IDE 2025.2 or later</li>
             <li>Markdown plugin (bundled with most JetBrains IDEs)</li>
         </ul>
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>0.2.1</h3>
+        <ul>
+            <li>Fixed preview background not matching IDE panel color on custom themes</li>
+            <li>Updated minimum supported IDE version to 2025.2</li>
+        </ul>
+
         <h3>0.2.0</h3>
         <ul>
             <li>Richer theme capture: headings, inline code, bold text, and table headers now reflect your theme's keyword, string, and number colors</li>
