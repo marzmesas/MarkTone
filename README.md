@@ -1,53 +1,58 @@
 # MarkTone
 
-MarkTone is a JetBrains plugin that generates and applies Markdown preview CSS from the active IDE theme.
+[![JetBrains Marketplace](https://img.shields.io/jetbrains/plugin/v/30278-marktone?label=Marketplace&logo=jetbrains)](https://plugins.jetbrains.com/plugin/30278-marktone)
+[![GitHub Release](https://img.shields.io/github/v/release/marzmesas/MarkTone?logo=github)](https://github.com/marzmesas/MarkTone/releases)
+[![Build](https://img.shields.io/github/actions/workflow/status/marzmesas/MarkTone/build.yml?logo=github)](https://github.com/marzmesas/MarkTone/actions/workflows/build.yml)
+[![License](https://img.shields.io/github/license/marzmesas/MarkTone)](LICENSE)
 
-## Goal
+Automatically generates and applies Markdown preview styles that match your current IDE theme.
 
-Make Markdown preview look native to the currently active JetBrains theme without manual CSS maintenance.
+## Features
 
-## Core Value
+- Extracts colors and fonts from your active IDE theme
+- Generates a complete Markdown preview stylesheet with proper typography
+- Auto-syncs styles when you switch themes — no manual CSS editing needed
+- Two rendering profiles: **Minimal** (compact, sober palette) and **Expressive** (spacious, rich colors)
+- Optional custom CSS overrides for further tweaking
 
-- Auto-sync styles when theme changes.
-- Keep markdown readable while matching IDE visual language.
-- Remove manual custom CSS setup for users.
+## Installation
 
-## Current Status
+**From the Marketplace** (recommended):
+Settings > Plugins > Marketplace > search "MarkTone" > Install
+Or install directly from the [plugin page](https://plugins.jetbrains.com/plugin/30278-marktone).
 
-- Project scaffold created (Gradle Kotlin DSL + plugin sources + tests).
-- Core CSS generation pipeline implemented.
-- Theme-change sync pipeline implemented.
-- Markdown preview integration implemented via `MarkdownSettings` custom stylesheet path API.
+**Manual install:**
+Download the latest `.zip` from [Releases](https://github.com/marzmesas/MarkTone/releases), then go to Settings > Plugins > gear icon > Install Plugin from Disk.
 
-## Prerequisites
+## Usage
 
-1. JDK 17+
-2. Use the included Gradle wrapper (`./gradlew`)
+MarkTone reads your current editor colors, font family, and font size, then composes a Markdown-specific stylesheet using CSS custom properties. The result is applied directly to the Markdown preview panel.
 
-## Local Setup
+- **Auto-sync** — styles update automatically when you switch themes.
+- **Profiles** — choose between *Minimal* and *Expressive* under Settings > Tools > MarkTone, or via the **Tools > MarkTone** menu.
+- **Custom CSS** — add your own overrides in the MarkTone settings panel.
+- **Regenerate** — trigger a manual refresh from **Tools > MarkTone > Regenerate CSS**.
 
-From project root:
+## Requirements
 
-1. (Optional) ensure shell uses Java 17:
-   - `export JAVA_HOME=$(/usr/libexec/java_home -v 17)`
-   - `export PATH="$JAVA_HOME/bin:$PATH"`
-2. Build checks:
-   - `./gradlew tasks`
-   - `./gradlew test`
-3. Run plugin in sandbox IDE:
-   - `./gradlew runIde`
+- JetBrains IDE **2025.2** or later
+- Markdown plugin (bundled with most JetBrains IDEs)
 
-## MVP Scope
+## Building from source
 
-- Read active theme colors/fonts.
-- Generate deterministic CSS tokens and markdown rules.
-- Apply CSS to Markdown preview automatically.
-- React to theme changes and refresh preview styles.
-- Expose a small settings panel with `Exact Match` and `Readable Docs` modes.
+Prerequisites: JDK 17+
 
-## Non-Goals (MVP)
+```bash
+# Run tests
+./gradlew test
 
-- Full WYSIWYG markdown editor.
-- Theme marketplace.
-- Per-project design systems.
+# Build the plugin
+./gradlew build
 
+# Launch a sandbox IDE with the plugin loaded
+./gradlew runIde
+```
+
+## License
+
+[Apache License 2.0](LICENSE)
