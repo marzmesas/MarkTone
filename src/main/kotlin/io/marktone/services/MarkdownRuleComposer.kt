@@ -9,13 +9,35 @@ class MarkdownRuleComposer {
     fun compose(tokens: Map<String, String>, profile: MarkToneProfile): String {
         val profileBlock = when (profile) {
             MarkToneProfile.EXACT_MATCH -> """
-                --mt-line-height: 1.55;
+                --mt-line-height: 1.45;
                 --mt-heading-scale: 1.00;
+                --mt-paragraph-margin: 0.5em;
+                --mt-heading-margin-top: 0.8em;
+                --mt-heading-margin-bottom: 0.3em;
+                --mt-block-padding: 8px;
+                --mt-table-padding: 4px 8px;
+                --mt-heading-color: var(--mt-fg);
+                --mt-bold-color: var(--mt-fg);
+                --mt-code-color: var(--mt-fg);
+                --mt-code-inline-bg: var(--mt-code-bg);
+                --mt-blockquote-accent: var(--mt-border);
+                --mt-th-color: var(--mt-fg);
             """.trimIndent()
 
             MarkToneProfile.READABLE_DOCS -> """
-                --mt-line-height: 1.70;
-                --mt-heading-scale: 1.08;
+                --mt-line-height: 1.75;
+                --mt-heading-scale: 1.12;
+                --mt-paragraph-margin: 1em;
+                --mt-heading-margin-top: 1.4em;
+                --mt-heading-margin-bottom: 0.6em;
+                --mt-block-padding: 14px;
+                --mt-table-padding: 8px 12px;
+                --mt-heading-color: var(--mt-keyword);
+                --mt-bold-color: var(--mt-keyword);
+                --mt-code-color: var(--mt-string);
+                --mt-code-inline-bg: var(--mt-code-bg);
+                --mt-blockquote-accent: var(--mt-accent);
+                --mt-th-color: var(--mt-keyword);
             """.trimIndent()
         }
 
@@ -41,16 +63,24 @@ class MarkdownRuleComposer {
             }
 
             h1, h2, h3, h4, h5, h6 {
-                color: var(--mt-fg);
+                color: var(--mt-heading-color);
                 line-height: 1.25;
+                margin-top: var(--mt-heading-margin-top);
+                margin-bottom: var(--mt-heading-margin-bottom);
             }
 
             h1 { font-size: calc(2rem * var(--mt-heading-scale)); }
             h2 { font-size: calc(1.65rem * var(--mt-heading-scale)); }
             h3 { font-size: calc(1.35rem * var(--mt-heading-scale)); }
 
-            p, li, td, th {
+            p, li {
                 color: var(--mt-fg);
+                margin-top: var(--mt-paragraph-margin);
+                margin-bottom: var(--mt-paragraph-margin);
+            }
+
+            strong, b {
+                color: var(--mt-bold-color);
             }
 
             a {
@@ -58,15 +88,15 @@ class MarkdownRuleComposer {
             }
 
             blockquote {
-                border-left: 3px solid var(--mt-border);
+                border-left: 3px solid var(--mt-blockquote-accent);
                 color: var(--mt-muted);
-                padding-left: 12px;
+                padding-left: var(--mt-block-padding);
                 margin-left: 0;
             }
 
             code {
-                background: var(--mt-code-bg);
-                color: var(--mt-code-fg);
+                background: var(--mt-code-inline-bg);
+                color: var(--mt-code-color);
                 padding: 0.1rem 0.25rem;
                 border-radius: 4px;
             }
@@ -75,11 +105,13 @@ class MarkdownRuleComposer {
                 background: var(--mt-code-bg);
                 border: 1px solid var(--mt-border);
                 border-radius: 6px;
-                padding: 12px;
+                padding: var(--mt-block-padding);
                 overflow: auto;
             }
 
             pre code {
+                background: transparent;
+                color: var(--mt-code-fg);
                 padding: 0;
                 border-radius: 0;
             }
@@ -88,9 +120,16 @@ class MarkdownRuleComposer {
                 border-collapse: collapse;
             }
 
-            th, td {
+            th {
                 border: 1px solid var(--mt-border);
-                padding: 6px 10px;
+                padding: var(--mt-table-padding);
+                color: var(--mt-th-color);
+            }
+
+            td {
+                border: 1px solid var(--mt-border);
+                padding: var(--mt-table-padding);
+                color: var(--mt-fg);
             }
 
             hr {

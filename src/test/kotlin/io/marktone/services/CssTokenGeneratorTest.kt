@@ -17,7 +17,10 @@ class CssTokenGeneratorTest {
             selectionHex = "264f78",
             hyperlinkHex = "4ea1ff",
             lineCommentHex = "6a9955",
-            defaultCodeBackgroundHex = "252526",
+            stringHex = "ce9178",
+            keywordHex = "569cd6",
+            numberHex = "b5cea8",
+            borderHex = "3a3a3a",
         )
 
         val tokens = CssTokenGenerator().generate(snapshot)
@@ -25,5 +28,11 @@ class CssTokenGeneratorTest {
         assertEquals("#1e1e1e", tokens["--mt-bg"])
         assertEquals("#d4d4d4", tokens["--mt-fg"])
         assertEquals("14px", tokens["--mt-font-size"])
+        assertEquals("#2a2d2e", tokens["--mt-code-bg"])
+        assertEquals("#ce9178", tokens["--mt-code-fg"])
+        assertEquals("#569cd6", tokens["--mt-keyword"])
+        assertEquals("#ce9178", tokens["--mt-string"])
+        assertEquals("#b5cea8", tokens["--mt-accent"])
+        assertEquals("#3a3a3a", tokens["--mt-border"])
     }
 }

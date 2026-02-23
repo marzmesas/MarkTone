@@ -18,13 +18,18 @@ class MarkdownRuleComposerTest {
             "--mt-border" to "#333333",
             "--mt-selection" to "#444444",
             "--mt-code-bg" to "#202020",
-            "--mt-code-fg" to "#eeeeee",
+            "--mt-code-fg" to "#ce9178",
+            "--mt-keyword" to "#569cd6",
+            "--mt-string" to "#ce9178",
+            "--mt-accent" to "#b5cea8",
         )
 
         val css = MarkdownRuleComposer().compose(tokens, MarkToneProfile.READABLE_DOCS)
 
         assertTrue(css.contains(":root"))
         assertTrue(css.contains("--mt-line-height"))
+        assertTrue(css.contains("--mt-keyword"))
+        assertTrue(css.contains("--mt-string"))
         assertTrue(css.contains("blockquote"))
         assertTrue(css.contains("pre"))
     }

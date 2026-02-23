@@ -9,5 +9,8 @@ data class ThemeSnapshot(
     val selectionHex: String,
     val hyperlinkHex: String,
     val lineCommentHex: String,
-    val defaultCodeBackgroundHex: String,
+    val stringHex: String,
+    val keywordHex: String,
+    val numberHex: String,
+    val borderHex: String,
 )

@@ -6,31 +6,49 @@ import com.intellij.openapi.editor.colors.EditorColors
 import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.ui.ColorUtil
 import io.marktone.model.ThemeSnapshot
+import java.awt.Color
 
 @Service(Service.Level.APP)
 class ThemeSnapshotService {
 
     fun capture(): ThemeSnapshot {
         val scheme = EditorColorsManager.getInstance().globalScheme
+        val bg = scheme.defaultBackground
+        val fg = scheme.defaultForeground
 
         return ThemeSnapshot(
             editorFontFamily = scheme.editorFontName,
             editorFontSize = scheme.editorFontSize,
-            foregroundHex = toHex(scheme.defaultForeground),
-            backgroundHex = toHex(scheme.defaultBackground),
-            caretRowHex = toHex(scheme.getColor(EditorColors.CARET_ROW_COLOR) ?: scheme.defaultBackground),
-            selectionHex = toHex(scheme.getColor(EditorColors.SELECTION_BACKGROUND_COLOR) ?: scheme.defaultBackground),
+            foregroundHex = toHex(fg),
+            backgroundHex = toHex(bg),
+            caretRowHex = toHex(scheme.getColor(EditorColors.CARET_ROW_COLOR) ?: bg),
+            selectionHex = toHex(scheme.getColor(EditorColors.SELECTION_BACKGROUND_COLOR) ?: bg),
             hyperlinkHex = toHex(
-                scheme.getAttributes(EditorColors.REFERENCE_HYPERLINK_COLOR)?.foregroundColor
-                    ?: scheme.defaultForeground,
+                scheme.getAttributes(EditorColors.REFERENCE_HYPERLINK_COLOR)?.foregroundColor ?: fg,
             ),
             lineCommentHex = toHex(
-                scheme.getAttributes(DefaultLanguageHighlighterColors.LINE_COMMENT)?.foregroundColor
-                    ?: scheme.defaultForeground,
+                scheme.getAttributes(DefaultLanguageHighlighterColors.LINE_COMMENT)?.foregroundColor ?: fg,
             ),
-            defaultCodeBackgroundHex = toHex(scheme.defaultBackground),
+            stringHex = toHex(
+                scheme.getAttributes(DefaultLanguageHighlighterColors.STRING)?.foregroundColor ?: fg,
+            ),
+            keywordHex = toHex(
+                scheme.getAttributes(DefaultLanguageHighlighterColors.KEYWORD)?.foregroundColor ?: fg,
+            ),
+            numberHex = toHex(
+                scheme.getAttributes(DefaultLanguageHighlighterColors.NUMBER)?.foregroundColor ?: fg,
+            ),
+            borderHex = toHex(blend(bg, fg, 0.18)),
         )
     }
 
-    private fun toHex(color: java.awt.Color): String = ColorUtil.toHex(color, false)
+    private fun blend(c1: Color, c2: Color, ratio: Double): Color {
+        return Color(
+            (c1.red + (c2.red - c1.red) * ratio).toInt(),
+            (c1.green + (c2.green - c1.green) * ratio).toInt(),
+            (c1.blue + (c2.blue - c1.blue) * ratio).toInt(),
+        )
+    }
+
+    private fun toHex(color: Color): String = ColorUtil.toHex(color, false)
 }
