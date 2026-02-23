@@ -48,4 +48,13 @@
                 displayName="MarkTone"
                 instance="io.marktone.settings.MarkToneConfigurable" />
     </extensions>
+
+    <actions>
+        <group id="io.marktone.ToolsMenu"
+               class="io.marktone.actions.MarkToneToolsGroup"
+               text="MarkTone"
+               popup="true">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </group>
+    </actions>
 </idea-plugin>
