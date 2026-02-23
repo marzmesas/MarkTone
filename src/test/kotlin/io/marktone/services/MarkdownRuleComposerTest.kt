@@ -24,7 +24,7 @@ class MarkdownRuleComposerTest {
             "--mt-accent" to "#b5cea8",
         )
 
-        val css = MarkdownRuleComposer().compose(tokens, MarkToneProfile.READABLE_DOCS)
+        val css = MarkdownRuleComposer().compose(tokens, MarkToneProfile.EXPRESSIVE)
 
         assertTrue(css.contains(":root"))
         assertTrue(css.contains("--mt-line-height"))

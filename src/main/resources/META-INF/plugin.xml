@@ -11,7 +11,7 @@
             <li>Extracts colors and fonts from your active IDE theme</li>
             <li>Generates a complete Markdown preview stylesheet with proper typography</li>
             <li>Auto-syncs styles when you switch themes — no manual CSS editing needed</li>
-            <li>Two rendering profiles: <b>Exact Match</b> (tight, code-like) and <b>Readable Docs</b> (spacious, doc-friendly)</li>
+            <li>Two rendering profiles: <b>Minimal</b> (compact, sober palette) and <b>Expressive</b> (spacious, rich colors)</li>
             <li>Optional custom CSS overrides for further tweaking</li>
         </ul>
 
@@ -32,7 +32,7 @@
             <li>Initial release</li>
             <li>Theme extraction and CSS token generation</li>
             <li>Markdown preview auto-sync on theme changes</li>
-            <li>Exact Match and Readable Docs rendering profiles</li>
+            <li>Minimal and Expressive rendering profiles</li>
             <li>Settings panel under Tools > MarkTone</li>
             <li>Custom CSS overrides support</li>
         </ul>

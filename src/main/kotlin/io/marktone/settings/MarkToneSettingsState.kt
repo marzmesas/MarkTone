@@ -12,7 +12,7 @@ class MarkToneSettingsState : PersistentStateComponent<MarkToneSettingsState.Sta
     data class State(
         var enabled: Boolean = true,
         var autoSync: Boolean = true,
-        var profile: MarkToneProfile = MarkToneProfile.READABLE_DOCS,
+        var profile: MarkToneProfile = MarkToneProfile.EXPRESSIVE,
         var customOverridesPath: String = "",
     )
 

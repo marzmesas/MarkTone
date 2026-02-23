@@ -79,7 +79,7 @@ class MarkToneConfigurable : Configurable {
             MarkToneSettingsState.State(
                 enabled = enabledCheckBox?.isSelected ?: true,
                 autoSync = autoSyncCheckBox?.isSelected ?: true,
-                profile = profileComboBox?.selectedItem as? MarkToneProfile ?: MarkToneProfile.READABLE_DOCS,
+                profile = profileComboBox?.selectedItem as? MarkToneProfile ?: MarkToneProfile.EXPRESSIVE,
                 customOverridesPath = customOverridesField?.text.orEmpty(),
             ),
         )

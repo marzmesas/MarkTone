@@ -8,7 +8,7 @@ class MarkdownRuleComposer {
 
     fun compose(tokens: Map<String, String>, profile: MarkToneProfile): String {
         val profileBlock = when (profile) {
-            MarkToneProfile.EXACT_MATCH -> """
+            MarkToneProfile.MINIMAL -> """
                 --mt-line-height: 1.45;
                 --mt-heading-scale: 1.00;
                 --mt-paragraph-margin: 0.5em;
@@ -24,7 +24,7 @@ class MarkdownRuleComposer {
                 --mt-th-color: var(--mt-fg);
             """.trimIndent()
 
-            MarkToneProfile.READABLE_DOCS -> """
+            MarkToneProfile.EXPRESSIVE -> """
                 --mt-line-height: 1.75;
                 --mt-heading-scale: 1.12;
                 --mt-paragraph-margin: 1em;
