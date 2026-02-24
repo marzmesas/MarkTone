@@ -48,6 +48,28 @@ tasks {
         jvmArgs("-Xmx2g")
     }
 
+    register<JavaExec>("runPyCharm") {
+        group = "intellij platform"
+        description = "Run plugin in local PyCharm installation"
+
+        val sandboxDir = layout.buildDirectory.dir("pycharm-sandbox")
+        val pyCharmPath = "/Applications/PyCharm.app/Contents"
+
+        classpath = files("$pyCharmPath/lib/app.jar")
+        mainClass.set("com.intellij.idea.Main")
+
+        jvmArgs(
+            "-Xmx2g",
+            "-Didea.paths.selector=MarkTonePyCharmSandbox",
+            "-Dplugin.path=${layout.buildDirectory.dir("idea-sandbox/plugins/MarkTone").get().asFile}",
+            "-Didea.system.path=${sandboxDir.get().asFile}/system",
+            "-Didea.config.path=${sandboxDir.get().asFile}/config",
+            "-Didea.log.path=${sandboxDir.get().asFile}/log",
+        )
+
+        dependsOn("prepareSandbox")
+    }
+
     test {
         useJUnitPlatform()
     }
