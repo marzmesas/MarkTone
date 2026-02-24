@@ -34,7 +34,7 @@ class ThemeSyncCoordinator {
             return
         }
 
-        if (!settings.autoSync && trigger != "startup" && trigger != "settings-change") {
+        if (!settings.autoSync && trigger != "startup" && trigger != "settings-change" && trigger != "file-open") {
             return
         }
 
@@ -43,7 +43,7 @@ class ThemeSyncCoordinator {
         val baseCss = service<MarkdownRuleComposer>().compose(tokens, settings.profile)
         val css = appendCustomOverrides(baseCss, settings.customOverridesPath)
         service<CssOutputService>().write(css)
-        service<PreviewSyncService>().applyGeneratedCss(css)
+        service<PreviewSyncService>().applyGeneratedCss()
     }
 
     private fun appendCustomOverrides(baseCss: String, customOverridesPath: String): String {

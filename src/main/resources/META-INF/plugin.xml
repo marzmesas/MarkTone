@@ -63,7 +63,16 @@
                 id="io.marktone.settings"
                 displayName="MarkTone"
                 instance="io.marktone.settings.MarkToneConfigurable" />
+        <statusBarWidgetFactory
+                id="io.marktone.StatusBarWidget"
+                implementation="io.marktone.widget.MarkToneStatusBarWidgetFactory"
+                order="after encodingWidget" />
     </extensions>
+
+    <projectListeners>
+        <listener class="io.marktone.listeners.MarkdownFileOpenListener"
+                  topic="com.intellij.openapi.fileEditor.FileEditorManagerListener" />
+    </projectListeners>
 
     <actions>
         <group id="io.marktone.ToolsMenu"
