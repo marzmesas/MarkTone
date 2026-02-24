@@ -63,10 +63,6 @@
                 id="io.marktone.settings"
                 displayName="MarkTone"
                 instance="io.marktone.settings.MarkToneConfigurable" />
-        <statusBarWidgetFactory
-                id="io.marktone.StatusBarWidget"
-                implementation="io.marktone.widget.MarkToneStatusBarWidgetFactory"
-                order="after encodingWidget" />
     </extensions>
 
     <projectListeners>
@@ -80,6 +76,13 @@
                text="MarkTone"
                popup="true">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </group>
+
+        <group id="io.marktone.ToolbarWidget"
+               class="io.marktone.widget.MarkToneToolbarAction"
+               text="MarkTone Profile"
+               popup="true">
+            <add-to-group group-id="MainToolbarRight" />
         </group>
     </actions>
 </idea-plugin>
