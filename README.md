@@ -1,7 +1,5 @@
 # MarkTone
 
-[![Install to IDE](https://img.shields.io/badge/Install%20to-JetBrains%20IDE-4285F4?style=for-the-badge&logo=jetbrains)](https://plugins.jetbrains.com/embeddable/install/30278)
-
 [![JetBrains Marketplace](https://img.shields.io/jetbrains/plugin/v/30278-marktone?label=Marketplace&logo=jetbrains)](https://plugins.jetbrains.com/plugin/30278-marktone)
 [![GitHub Release](https://img.shields.io/github/v/release/marzmesas/MarkTone?logo=github)](https://github.com/marzmesas/MarkTone/releases)
 [![Build](https://img.shields.io/github/actions/workflow/status/marzmesas/MarkTone/build.yml?logo=github)](https://github.com/marzmesas/MarkTone/actions/workflows/build.yml)
