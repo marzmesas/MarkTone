@@ -1,5 +1,6 @@
 package io.marktone.settings
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.State
@@ -28,5 +29,8 @@ class MarkToneSettingsState : PersistentStateComponent<MarkToneSettingsState.Sta
 
     fun update(newState: State) {
         state = newState
+        ApplicationManager.getApplication().messageBus
+            .syncPublisher(MarkToneSettingsListener.TOPIC)
+            .settingsChanged(newState)
     }
 }
