@@ -21,6 +21,7 @@ class CssTokenGenerator {
             "--mt-keyword" to "#${snapshot.keywordHex}",
             "--mt-string" to "#${snapshot.stringHex}",
             "--mt-accent" to "#${snapshot.numberHex}",
+            "--mt-function" to "#${snapshot.functionHex}",
         )
     }
 }

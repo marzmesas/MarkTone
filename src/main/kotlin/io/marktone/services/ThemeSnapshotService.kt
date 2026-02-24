@@ -39,6 +39,9 @@ class ThemeSnapshotService {
             numberHex = toHex(
                 scheme.getAttributes(DefaultLanguageHighlighterColors.NUMBER)?.foregroundColor ?: fg,
             ),
+            functionHex = toHex(
+                scheme.getAttributes(DefaultLanguageHighlighterColors.FUNCTION_DECLARATION)?.foregroundColor ?: fg,
+            ),
             borderHex = toHex(blend(bg, fg, 0.18)),
         )
     }

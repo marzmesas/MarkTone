@@ -12,5 +12,6 @@ data class ThemeSnapshot(
     val stringHex: String,
     val keywordHex: String,
     val numberHex: String,
+    val functionHex: String,
     val borderHex: String,
 )

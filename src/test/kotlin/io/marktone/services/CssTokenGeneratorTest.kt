@@ -20,6 +20,7 @@ class CssTokenGeneratorTest {
             stringHex = "ce9178",
             keywordHex = "569cd6",
             numberHex = "b5cea8",
+            functionHex = "dcdcaa",
             borderHex = "3a3a3a",
         )
 
@@ -33,6 +34,7 @@ class CssTokenGeneratorTest {
         assertEquals("#569cd6", tokens["--mt-keyword"])
         assertEquals("#ce9178", tokens["--mt-string"])
         assertEquals("#b5cea8", tokens["--mt-accent"])
+        assertEquals("#dcdcaa", tokens["--mt-function"])
         assertEquals("#3a3a3a", tokens["--mt-border"])
     }
 }

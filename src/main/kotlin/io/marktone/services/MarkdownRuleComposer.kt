@@ -137,6 +137,25 @@ class MarkdownRuleComposer {
                 border-top: 1px solid var(--mt-border);
                 margin: 1.5rem 0;
             }
+
+            ${syntaxHighlightRules(profile)}
+        """.trimIndent()
+    }
+
+    private fun syntaxHighlightRules(profile: MarkToneProfile): String = when (profile) {
+        MarkToneProfile.EXPRESSIVE -> """
+            .hljs-keyword, .hljs-built_in, .hljs-literal { color: var(--mt-keyword); }
+            .hljs-string, .hljs-regexp, .hljs-attr, .hljs-symbol { color: var(--mt-string); }
+            .hljs-number { color: var(--mt-accent); }
+            .hljs-comment, .hljs-meta { color: var(--mt-muted); font-style: italic; }
+            .hljs-title, .hljs-title.class_, .hljs-title.function_ { color: var(--mt-function); }
+            .hljs-type { color: var(--mt-accent); }
+            .hljs-params, .hljs-punctuation, .hljs-variable { color: var(--mt-code-fg); }
+        """.trimIndent()
+
+        MarkToneProfile.MINIMAL -> """
+            .hljs-keyword, .hljs-built_in, .hljs-literal { color: var(--mt-keyword); }
+            .hljs-comment, .hljs-meta { color: var(--mt-muted); font-style: italic; }
         """.trimIndent()
     }
 }
