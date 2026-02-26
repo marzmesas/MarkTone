@@ -27,12 +27,16 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>0.3.1</h3>
+        <ul>
+            <li>Fixed custom stylesheet not loading due to Markdown plugin rejecting external file paths</li>
+        </ul>
+
         <h3>0.3.0</h3>
         <ul>
             <li>Toolbar profile switcher: click the MarkTone icon in the main toolbar to quickly switch between Minimal and Expressive</li>
             <li>Code block syntax highlighting: fenced code blocks in the Markdown preview now color keywords, strings, numbers, comments, and function names using your IDE theme colors</li>
             <li>Fixed preview showing stale styles when reopening Markdown files</li>
-            <li>Generated CSS no longer persists in project settings, preventing style leakage across IDEs</li>
         </ul>
 
         <h3>0.2.1</h3>
@@ -76,6 +80,8 @@
     <projectListeners>
         <listener class="io.marktone.listeners.MarkdownFileOpenListener"
                   topic="com.intellij.openapi.fileEditor.FileEditorManagerListener" />
+        <listener class="io.marktone.listeners.MarkdownSettingsCleanupListener"
+                  topic="com.intellij.openapi.project.ProjectManagerListener" />
     </projectListeners>
 
     <actions>

@@ -1,7 +1,6 @@
 package io.marktone.services
 
 import com.intellij.openapi.components.Service
-import com.intellij.openapi.components.service
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.ProjectManager
 import org.intellij.plugins.markdown.settings.MarkdownSettings
@@ -11,8 +10,7 @@ class PreviewSyncService {
 
     private val logger = thisLogger()
 
-    fun applyGeneratedCss() {
-        val cssPath = service<CssOutputService>().outputPath().toString()
+    fun applyGeneratedCss(css: String) {
         val projects = ProjectManager.getInstance().openProjects
 
         if (projects.isEmpty()) {
@@ -24,10 +22,10 @@ class PreviewSyncService {
             try {
                 val markdownSettings = MarkdownSettings.getInstance(project)
                 markdownSettings.update {
-                    it.useCustomStylesheetPath = true
-                    it.customStylesheetPath = cssPath
-                    it.useCustomStylesheetText = false
-                    it.customStylesheetText = ""
+                    it.useCustomStylesheetText = true
+                    it.customStylesheetText = css
+                    it.useCustomStylesheetPath = false
+                    it.customStylesheetPath = ""
                 }
                 logger.info("MarkTone applied Markdown custom stylesheet for project: ${project.name}")
             } catch (ex: Throwable) {
