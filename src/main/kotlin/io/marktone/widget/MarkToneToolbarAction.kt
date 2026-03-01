@@ -4,6 +4,7 @@ import com.intellij.openapi.actionSystem.ActionGroup
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.Toggleable
 import com.intellij.openapi.components.service
 import com.intellij.openapi.util.IconLoader
 import io.marktone.services.ThemeSyncCoordinator
@@ -32,7 +33,14 @@ class MarkToneToolbarAction : ActionGroup() {
 
     override fun getChildren(e: AnActionEvent?): Array<AnAction> {
         return MarkToneProfile.entries.map { profile ->
-            object : AnAction(profile.displayName) {
+            object : AnAction(profile.displayName), Toggleable {
+                override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
+
+                override fun update(e: AnActionEvent) {
+                    val isActive = service<MarkToneSettingsState>().current().profile == profile
+                    Toggleable.setSelected(e.presentation, isActive)
+                }
+
                 override fun actionPerformed(e: AnActionEvent) {
                     val current = service<MarkToneSettingsState>().current()
                     service<MarkToneSettingsState>().update(current.copy(profile = profile))
