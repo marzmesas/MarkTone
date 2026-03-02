@@ -15,6 +15,7 @@ class MarkToneSettingsState : PersistentStateComponent<MarkToneSettingsState.Sta
         var autoSync: Boolean = true,
         var profile: MarkToneProfile = MarkToneProfile.EXPRESSIVE,
         var customOverridesPath: String = "",
+        var fontSizeScaling: Int = 100,
     )
 
     private var state: State = State()

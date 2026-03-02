@@ -6,10 +6,11 @@ import io.marktone.model.ThemeSnapshot
 @Service(Service.Level.APP)
 class CssTokenGenerator {
 
-    fun generate(snapshot: ThemeSnapshot): Map<String, String> {
+    fun generate(snapshot: ThemeSnapshot, fontSizeScaling: Int = 100): Map<String, String> {
+        val scaledSize = snapshot.editorFontSize * fontSizeScaling / 100
         return linkedMapOf(
             "--mt-font-family" to "\"${snapshot.editorFontFamily}\", sans-serif",
-            "--mt-font-size" to "${snapshot.editorFontSize}px",
+            "--mt-font-size" to "${scaledSize}px",
             "--mt-bg" to "#${snapshot.backgroundHex}",
             "--mt-fg" to "#${snapshot.foregroundHex}",
             "--mt-muted" to "#${snapshot.lineCommentHex}",

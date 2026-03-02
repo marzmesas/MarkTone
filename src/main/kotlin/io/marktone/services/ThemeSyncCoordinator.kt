@@ -39,7 +39,7 @@ class ThemeSyncCoordinator {
         }
 
         val snapshot = service<ThemeSnapshotService>().capture()
-        val tokens = service<CssTokenGenerator>().generate(snapshot)
+        val tokens = service<CssTokenGenerator>().generate(snapshot, settings.fontSizeScaling)
         val baseCss = service<MarkdownRuleComposer>().compose(tokens, settings.profile)
         val css = appendCustomOverrides(baseCss, settings.customOverridesPath)
         service<CssOutputService>().write(css)

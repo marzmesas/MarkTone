@@ -27,6 +27,12 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>0.4.0</h3>
+        <ul>
+            <li>Toast notification: a brief balloon confirms which profile is now active when toggling via keyboard shortcut</li>
+            <li>Preview font size scaling: new slider in Settings (90%–180%) to scale the Markdown preview font relative to your editor font size</li>
+        </ul>
+
         <h3>0.3.1</h3>
         <ul>
             <li>Fixed custom stylesheet not loading due to Markdown plugin rejecting external file paths</li>
@@ -70,6 +76,7 @@
     <depends>org.intellij.plugins.markdown</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup displayType="BALLOON" id="MarkTone" />
         <postStartupActivity implementation="io.marktone.startup.MarkToneStartupActivity" />
         <applicationConfigurable
                 id="io.marktone.settings"

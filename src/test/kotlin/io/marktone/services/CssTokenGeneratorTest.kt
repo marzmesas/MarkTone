@@ -169,9 +169,15 @@ class CssTokenGeneratorTest {
     }
 
     @Test
-    fun scalingAt130ProducesMaximumFontSize() {
+    fun scalingAt130() {
         val tokens = generator.generate(darkSnapshot, 130)
         assertEquals("18px", tokens["--mt-font-size"])
+    }
+
+    @Test
+    fun scalingAt180ProducesMaximumFontSize() {
+        val tokens = generator.generate(darkSnapshot, 180)
+        assertEquals("25px", tokens["--mt-font-size"])
     }
 
     @Test

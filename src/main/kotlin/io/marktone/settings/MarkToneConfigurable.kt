@@ -7,11 +7,13 @@ import com.intellij.ui.components.JBTextField
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
 import java.awt.Insets
+import java.util.Hashtable
 import javax.swing.JCheckBox
 import javax.swing.JComboBox
 import javax.swing.JComponent
 import javax.swing.JLabel
 import javax.swing.JPanel
+import javax.swing.JSlider
 
 class MarkToneConfigurable : Configurable {
     private val settingsService = service<MarkToneSettingsState>()
@@ -21,6 +23,8 @@ class MarkToneConfigurable : Configurable {
     private var autoSyncCheckBox: JCheckBox? = null
     private var profileComboBox: JComboBox<MarkToneProfile>? = null
     private var customOverridesField: JBTextField? = null
+    private var fontSizeSlider: JSlider? = null
+    private var fontSizeLabel: JLabel? = null
 
     override fun getDisplayName(): String = "MarkTone"
 
@@ -55,6 +59,26 @@ class MarkToneConfigurable : Configurable {
         customOverridesField = JBTextField()
         panel.add(customOverridesField, gbc)
 
+        gbc.gridy = 6
+        fontSizeLabel = JLabel("Preview font size scaling: 100%")
+        panel.add(fontSizeLabel, gbc)
+
+        gbc.gridy = 7
+        fontSizeSlider = JSlider(90, 180, 100).apply {
+            majorTickSpacing = 30
+            minorTickSpacing = 10
+            paintTicks = true
+            paintLabels = true
+            labelTable = Hashtable<Int, JLabel>().apply {
+                put(90, JLabel("90%"))
+                put(120, JLabel("120%"))
+                put(150, JLabel("150%"))
+                put(180, JLabel("180%"))
+            }
+            addChangeListener { fontSizeLabel?.text = "Preview font size scaling: ${value}%" }
+        }
+        panel.add(fontSizeSlider, gbc)
+
         rootPanel = panel
         reset()
         return panel
@@ -67,11 +91,13 @@ class MarkToneConfigurable : Configurable {
         val currentAutoSync = autoSyncCheckBox?.isSelected ?: persisted.autoSync
         val currentProfile = profileComboBox?.selectedItem as? MarkToneProfile ?: persisted.profile
         val currentOverrides = customOverridesField?.text.orEmpty()
+        val currentScaling = fontSizeSlider?.value ?: persisted.fontSizeScaling
 
         return currentEnabled != persisted.enabled ||
             currentAutoSync != persisted.autoSync ||
             currentProfile != persisted.profile ||
-            currentOverrides != persisted.customOverridesPath
+            currentOverrides != persisted.customOverridesPath ||
+            currentScaling != persisted.fontSizeScaling
     }
 
     override fun apply() {
@@ -81,6 +107,7 @@ class MarkToneConfigurable : Configurable {
                 autoSync = autoSyncCheckBox?.isSelected ?: true,
                 profile = profileComboBox?.selectedItem as? MarkToneProfile ?: MarkToneProfile.EXPRESSIVE,
                 customOverridesPath = customOverridesField?.text.orEmpty(),
+                fontSizeScaling = fontSizeSlider?.value ?: 100,
             ),
         )
         service<ThemeSyncCoordinator>().regenerateAndApply("settings-change")
@@ -92,6 +119,8 @@ class MarkToneConfigurable : Configurable {
         autoSyncCheckBox?.isSelected = persisted.autoSync
         profileComboBox?.selectedItem = persisted.profile
         customOverridesField?.text = persisted.customOverridesPath
+        fontSizeSlider?.value = persisted.fontSizeScaling
+        fontSizeLabel?.text = "Preview font size scaling: ${persisted.fontSizeScaling}%"
     }
 
     override fun disposeUIResources() {
@@ -100,5 +129,7 @@ class MarkToneConfigurable : Configurable {
         autoSyncCheckBox = null
         profileComboBox = null
         customOverridesField = null
+        fontSizeSlider = null
+        fontSizeLabel = null
     }
 }
