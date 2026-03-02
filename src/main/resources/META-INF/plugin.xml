@@ -98,5 +98,15 @@
                popup="true">
             <add-to-group group-id="MainToolbarRight" />
         </group>
+
+        <action id="io.marktone.ToggleProfile"
+                class="io.marktone.actions.ToggleProfileAction"
+                text="Toggle MarkTone Profile"
+                description="Switch between Minimal and Expressive profiles">
+            <keyboard-shortcut keymap="$default"
+                               first-keystroke="ctrl alt shift M" />
+            <keyboard-shortcut keymap="Mac OS X 10.5+"
+                               first-keystroke="meta alt shift M" />
+        </action>
     </actions>
 </idea-plugin>
