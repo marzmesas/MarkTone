@@ -15,6 +15,14 @@ class ThemeSnapshotService {
     fun capture(): ThemeSnapshot {
         val scheme = EditorColorsManager.getInstance().globalScheme
         val bg = UIManager.getColor("Panel.background") ?: scheme.defaultBackground
+        return captureFrom(scheme, bg)
+    }
+
+    fun captureFrom(scheme: com.intellij.openapi.editor.colors.EditorColorsScheme): ThemeSnapshot {
+        return captureFrom(scheme, scheme.defaultBackground)
+    }
+
+    private fun captureFrom(scheme: com.intellij.openapi.editor.colors.EditorColorsScheme, bg: Color): ThemeSnapshot {
         val fg = scheme.defaultForeground
 
         return ThemeSnapshot(
