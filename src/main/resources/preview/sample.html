@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style id="marktone-css"></style>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { overflow-x: hidden !important; margin: 0; padding: 0; }
+        body { padding: 12px 16px; }
+        .preview-container { width: 100%; max-width: 100%; overflow: hidden; }
+        .preview-container pre { overflow-x: auto; max-width: 100%; }
+        .preview-container table { width: 100%; table-layout: fixed; }
+        .preview-container td, .preview-container th { overflow-wrap: break-word; }
+    </style>
+    <script>
+        function updateCss(css) {
+            document.getElementById('marktone-css').textContent = css;
+        }
+    </script>
+</head>
+<body>
+<div class="preview-container">
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+
+    <p>
+        This is a paragraph with <strong>bold text</strong>, a
+        <a href="#">hyperlink</a>, and <code>inline code</code>.
+    </p>
+
+    <blockquote>
+        <p>Blockquotes stand out from the surrounding text to highlight
+        important passages or citations.</p>
+    </blockquote>
+
+<pre><code><span class="hljs-keyword">fun</span> <span class="hljs-title function_">greet</span>(<span class="hljs-params">name: <span class="hljs-type">String</span></span>) {
+    <span class="hljs-comment">// Return a greeting</span>
+    <span class="hljs-keyword">val</span> n = <span class="hljs-number">42</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"Hi, <span class="hljs-variable">$name</span>"</span>
+}</code></pre>
+
+    <ol>
+        <li>First ordered item</li>
+        <li>Second ordered item</li>
+    </ol>
+
+    <ul>
+        <li>Unordered item A</li>
+        <li>Unordered item B</li>
+    </ul>
+
+    <table>
+        <thead>
+            <tr><th>Feature</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Theme sync</td><td>Active</td></tr>
+            <tr><td>Font scaling</td><td>Enabled</td></tr>
+        </tbody>
+    </table>
+
+    <hr>
+</div>
+</body>
+</html>
