@@ -13,6 +13,9 @@ Automatically generates and applies Markdown preview styles that match your curr
 - Generates a complete Markdown preview stylesheet with proper typography
 - Auto-syncs styles when you switch themes — no manual CSS editing needed
 - Two rendering profiles: **Minimal** (compact, sober palette) and **Expressive** (spacious, rich colors)
+- **Live preview in settings** — see how your profile, font scaling, and theme choices look before applying
+- **Preview theme selector** — try any installed editor color scheme in the settings preview without switching your IDE theme
+- Adjustable font size scaling (90%–180%) for the Markdown preview
 - Optional custom CSS overrides for further tweaking
 
 ## Installation
@@ -35,7 +38,7 @@ MarkTone reads your current editor colors, font family, and font size, then comp
 
 ## Requirements
 
-- JetBrains IDE **2025.2** or later
+- JetBrains IDE **2023.3** or later
 - Markdown plugin (bundled with most JetBrains IDEs)
 
 ## Building from source
