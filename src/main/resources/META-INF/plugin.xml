@@ -12,6 +12,11 @@
             <li>Generates a complete Markdown preview stylesheet with proper typography</li>
             <li>Auto-syncs styles when you switch themes — no manual CSS editing needed</li>
             <li>Two rendering profiles: <b>Minimal</b> (compact, sober palette) and <b>Expressive</b> (spacious, rich colors)</li>
+            <li>Syntax highlighting in fenced code blocks — keywords, strings, numbers, comments, and functions colored from your theme</li>
+            <li>Live preview in settings — see how profile, font scaling, and theme choices look before applying</li>
+            <li>Preview theme selector — try any installed editor color scheme without switching your IDE theme</li>
+            <li>Adjustable font size scaling (90%–180%) for the Markdown preview</li>
+            <li>Quick profile switching from the toolbar, <b>Tools &gt; MarkTone</b> menu, or keyboard shortcut (<b>Ctrl+Alt+Shift+M</b> / <b>Cmd+Alt+Shift+M</b> on Mac)</li>
             <li>Optional custom CSS overrides for further tweaking</li>
         </ul>
 
