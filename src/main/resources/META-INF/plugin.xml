@@ -21,12 +21,19 @@
 
         <h3>Requirements</h3>
         <ul>
-            <li>JetBrains IDE 2025.2 or later</li>
+            <li>JetBrains IDE 2023.3 or later</li>
             <li>Markdown plugin (bundled with most JetBrains IDEs)</li>
         </ul>
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>0.5.0</h3>
+        <ul>
+            <li>Live Markdown preview in settings: see how your profile, font scaling, and theme choices look before applying</li>
+            <li>Preview theme selector: switch between any installed editor color scheme directly in the settings preview</li>
+            <li>Expanded compatibility: now supports JetBrains IDEs from 2023.3 onward (previously 2025.2+)</li>
+        </ul>
+
         <h3>0.4.0</h3>
         <ul>
             <li>Toast notification: a brief balloon confirms which profile is now active when toggling via keyboard shortcut</li>
